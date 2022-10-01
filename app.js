@@ -12,10 +12,23 @@ const myDataSource = new DataSource({
 });
 myDataSource.initialize().then(()=>{
     console.log("success")
-}).catch(()=>{
-    console.log("fail")
-});
+    const nickname = "테스트";
+    const email = "test@test.com";
+    const password = "testpassword";
 
+    myDataSource.query(`
+    insert into users (email, nickname, password)
+    values (?, ?, ?)`,
+    [nickname, email, password])
+    const queryRes = myDataSource.query('select * from users');
+    queryRes.then((value) => {
+        console.log(value);
+    }).catch(() => {
+
+    });
+}).catch(()=>{
+    console.log("fail");
+});
 
 const express = require('express');
 const app = express();
