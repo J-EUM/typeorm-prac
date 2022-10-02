@@ -16,10 +16,6 @@ myDataSource.initialize().then(()=>{
     const email = "test@test.com";
     const password = "testpassword";
 
-    myDataSource.query(`
-    insert into users (email, nickname, password)
-    values (?, ?, ?)`,
-    [nickname, email, password])
     const queryRes = myDataSource.query('select * from users');
     queryRes.then((value) => {
         console.log(value);
